@@ -3,55 +3,45 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
 
 export default class CreateExercises extends Component {
-    constructor(props){
-        super(props);
-
-        this.onChangeUsername = this.onChangeUsername.bind(this);
-        this.onChangeDescription = this.onChangeDescription.bind(this);
-        this.onChangeDuration = this.onChangeDuration.bind(this);
-        this.onChangeDate = this.onChangeDate(this);
-        this.onSubmit = this.onSubmit(this);
-
-        this.state = {
-            username: '',
-            description: '',
-            duration: 0,
-            date: new Date(),
-            users: []
-        }
+    state = {
+        username: '',
+        description: '',
+        duration: 0,
+        date: new Date(),
+        users: []
     }
-   
     componentDidMount(){
         this.setState({
             users: ['test user'],
             username: 'test user'
         });
+
     }
-    onChangeUsername(e){
+    onChangeUsername = (e) => {
         this.setState({
             username: e.target.value
         });
     }
 
-    onChangeDescription(e){
+    onChangeDescription = (e) => {
         this.setState({
             description: e.target.value
         });
     }
 
-    onChangeDuration(e){
+    onChangeDuration = (e) => {
         this.setState({
             duration: e.target.value
         });
     }
 
-    onChangeDate(date){
+    onChangeDate = (date) => {
         this.setState({
             date: date
         });
     }
    
-    onSubmit(e){
+    onSubmit = (e) => {
         e.preventDefault();
 
         const exercise = {
@@ -63,20 +53,21 @@ export default class CreateExercises extends Component {
 
         console.log(exercise);
 
-        window.location = '/';
+        //window.location = '/';
     }
 
     render () {
         return (
-            <div>
+            <div className='container'>
                 <h2>Create New Exercise Log</h2>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.onSubmit}> 
                     <div className="form-group">
                         <label>Username: </label>
                         <select ref="userInput"
-                            required
+                            required 
+                            onChange={this.onChangeUsername}
                             className="form-control"
-                            value={this.onChangeUsername}>
+                            >
                                 {
                                     this.state.users.map(function(user) {
                                         return <option
@@ -113,11 +104,12 @@ export default class CreateExercises extends Component {
                             onChange={this.onChangeDate}
                             />
                        </div>
-                    </div>
+                    </div><br/>
 
                     <div className="form-group">
                         <input type="submit" value="Create Exercise Log" className="btn btn-primary" />
                     </div>
+
                 </form>
             </div>
         );
