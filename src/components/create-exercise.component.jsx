@@ -60,7 +60,7 @@ export default class CreateExercises extends Component {
         return (
             <div className='container'>
                 <h2>Create New Exercise Log</h2>
-                <form onSubmit={this.onSubmit}> 
+                <form c> 
                     <div className="form-group">
                         <label>Username: </label>
                         <select ref="userInput"

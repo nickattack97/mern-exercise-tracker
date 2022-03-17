@@ -21,7 +21,8 @@ router.route('/add').post((req, res) => {
 
     newExercise.save()
     .then(() => res.json('Exercise added!'))
-    .catch(() => res.status(400).json('Error: ' + err));
+    // eslint-disable-next-line no-undef
+    .catch(() => res.status(400).json('Error: ' +err));
 });
 
 router.route('/:id').get((req,res) => {
@@ -46,6 +47,7 @@ router.route('/update/:id').post((req, res) => {
 
         exercise.save()
         .then(() => res.json('Exercise updated!'))
+        // eslint-disable-next-line no-undef
         .catch(() => res.status(400).json('Error: ' + err));
     })
     .catch(err => res.status(400).json('Error: ' + err));
