@@ -27,18 +27,19 @@ class EditExercises extends Component {
                     username: res.data.username,
                     description: res.data.description,
                     duration: res.data.duration,
-                    date: new Date(res.data.date),
+                    date: new Date(res.data.date)
                 })
             })
             .catch((error)=>{
                 console.log(error);
             })
+            console.log(this.state.username);
 
             axios.get('http://localhost:3001/users/')
             .then(res => {
                 if(res.data.length > 0){
                     this.setState({
-                        users: res.data.map(user => user.username),
+                        users: res.data.map(user => user.username)
                     })
                 }
             })
@@ -82,7 +83,7 @@ class EditExercises extends Component {
         axios.post('http://localhost:3001/exercises/update/'+this.props.params.id, exercise)
         .then(res => console.log(res.data));
 
-        window.location = '/';
+        //window.location = '/';
     }
 
     render () {
